@@ -40,6 +40,7 @@ There are examples here for each of the endpoints present. As you create new end
 
 1. Write jest tests to improve coverage
 2. Implement schema checking
-3. Add a new classification to the data store, e.g comets (will require some renaming)
-4. Update index to support new classification
-5. Add a new endpoint route, e.g. Edit functionality
+3. Schema documentation [Swagger/OpenAPI](https://swagger.io/specification/)
+4. Add a new classification to the data store, e.g comets (will require some renaming)
+5. Update index to support new classification
+6. Add a new endpoint route, e.g. Edit functionality

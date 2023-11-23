@@ -18,6 +18,7 @@ export const addPlanet = (planet: Planet) => {
   return null;
 };
 
+/* Note: Untested */
 export const editPlanet = (id: string, updatePlanet: UpdatePlanet) => {
   try {
     editJsonItem({ store: "planet", id, update: { $set: updatePlanet } });
@@ -51,7 +52,7 @@ export const getPlanetById = (id: string) =>
 
 export const searchStoredPlanets = ({
   name,
-  classification,
+  type,
   minDistance,
   maxDistance,
   minMass,
@@ -60,7 +61,7 @@ export const searchStoredPlanets = ({
   const buildQuery = [];
 
   if (name) buildQuery.push({ key: "name", $includes: name });
-  if (classification) buildQuery.push({ key: "type", $exact: classification });
+  if (type) buildQuery.push({ key: "type", $exact: type });
   if (minDistance) buildQuery.push({ key: "solarDistance", $gte: minDistance });
   if (maxDistance) buildQuery.push({ key: "solarDistance", $lte: maxDistance });
   if (minMass) buildQuery.push({ key: "mass", $gte: minMass });

@@ -35,3 +35,11 @@ Note: You do not need an account, you can download the software and use straight
 You will find a file called Postman_Examples.json. Within postman you can import this file, see the button on the left hand side towards the top of the UI.
 
 There are examples here for each of the endpoints present. As you create new endpoints you should add to this in order to ensure they work as expected. Jest testing will only get you so far, you should perform integration tests as well to ensure correct functionality.
+
+# Potential Tasks
+
+1. Write jest tests to improve coverage
+2. Implement schema checking
+3. Add a new classification to the data store, e.g comets (will require some renaming)
+4. Update index to support new classification
+5. Add a new endpoint route, e.g. Edit functionality

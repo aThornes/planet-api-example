@@ -8,24 +8,16 @@ import { searchStoredPlanets } from "@handlers/planetHandler";
 const searchPlanet = (req: ExpressRequest, res: ExpressResponse) => {
   const body = req.body;
 
-  const { name, classification, minDistance, maxDistance, minMass, maxMass } =
-    body;
+  const { name, type, minDistance, maxDistance, minMass, maxMass } = body;
 
   /* In practise a schema check should be used rather than a basic check like this */
-  if (
-    !name &&
-    !classification &&
-    !minDistance &&
-    !maxDistance &&
-    !minMass &&
-    !maxMass
-  ) {
+  if (!name && !type && !minDistance && !maxDistance && !minMass && !maxMass) {
     return res.status(400).send("Invalid body parameters provided");
   }
 
   const planet = searchStoredPlanets({
     name,
-    classification,
+    type,
     minDistance,
     maxDistance,
     minMass,

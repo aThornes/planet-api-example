@@ -77,7 +77,7 @@ interface PlanetSearchableParams {
 
 interface PlanetSearchParams {
   name?: string;
-  classification?: string;
+  type?: string;
   minDistance?: number;
   maxDistance?: number;
   minMass?: number;

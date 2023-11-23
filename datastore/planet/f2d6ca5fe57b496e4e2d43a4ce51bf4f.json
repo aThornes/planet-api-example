@@ -1,0 +1,13 @@
+{
+  "name": "Mercury",
+  "type": "terrestrial",
+  "mass": 3.301e+23,
+  "solarDistance": 0.4,
+  "description": "Mercury is the first planet from the Sun and the smallest in the Solar System. It is a terrestrial planet with a heavily cratered surface due to overlapping impact events. These features are well preserved since the planet has no geological activity and an extremely tenuous atmosphere called an exosphere.",
+  "mRadius": 2439.7,
+  "density": 5.427,
+  "gravity": 3.7,
+  "temperature": 437,
+  "surfacePressure": 0.5,
+  "rotationalPeriod": 1407.5
+}

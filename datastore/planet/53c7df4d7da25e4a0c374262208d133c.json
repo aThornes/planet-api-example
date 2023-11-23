@@ -1,0 +1,15 @@
+{
+  "name": "Mars",
+  "type": "terrestrial",
+  "mass": 6.4171e+23,
+  "solarDistance": 1.52,
+  "description": "Mars is the fourth planet and the furthest terrestrial planet from the Sun. The reddish color of its surface is due to finely grained iron(III) oxide dust in the soil, giving it the nickname 'the Red Planet'. Mars's radius is second smallest among the planets in the Solar System at 3,389.5 km (2,106 mi)",
+  "mRadius": 3389.5,
+  "eRadius": 3396.2,
+  "pRadius": 3376.2,
+  "density": 3.93,
+  "gravity": 3.72076,
+  "temperature": 209,
+  "surfacePressure": 0.636,
+  "rotationalPeriod": 24.616
+}

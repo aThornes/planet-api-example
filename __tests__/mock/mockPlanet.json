@@ -1,0 +1,15 @@
+{
+  "name": "Earth",
+  "type": "terrestrial",
+  "mass": 5.972e24,
+  "solarDistance": 1,
+  "description": "Earth is the third planet from the Sun and the only astronomical object known to harbor life. This is enabled by Earth being a water world, the only one in the Solar System sustaining liquid surface water. Almost all of Earth's water is contained in its global ocean, covering 70.8% of Earth's crust",
+  "mRadius": 6371,
+  "eRadius": 6378.137,
+  "pRadius": 6356.752,
+  "density": 5.5134,
+  "gravity": 9.80665,
+  "temperature": 287.91,
+  "surfacePressure": 101.325,
+  "rotationalPeriod": 24
+}

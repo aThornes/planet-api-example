@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "594d511e-3208-4e0f-a1d5-51026896d13a",
+		"name": "Jest Example API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Planet by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/planet/53c7df4d7da25e4a0c374262208d133c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet",
+						"53c7df4d7da25e4a0c374262208d133c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Planet (name)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Earth\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Planet (type)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Earth\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Planet (range)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Earth\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Planet (Earth)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Earth\",\n    \"type\": \"terrestrial\",\n    \"mass\": 5972000000000000000000000,\n    \"solarDistance\": 1,\n    \"description\": \"Earth is the third planet from the Sun and the only astronomical object known to harbor life. This is enabled by Earth being a water world, the only one in the Solar System sustaining liquid surface water. Almost all of Earth's water is contained in its global ocean, covering 70.8% of Earth's crust\",\n    \"mRadius\": 6371,\n    \"eRadius\": 6378.137,\n    \"pRadius\": 6356.752,\n    \"density\": 5.5134,\n    \"gravity\": 9.80665,\n    \"temperature\": 287.91,\n    \"surfacePressure\":101.325,\n    \"rotationalPeriod\": 24\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Planet (Mars)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mars\",\n    \"type\": \"terrestrial\",\n    \"mass\": 641710000000000000000000,\n    \"solarDistance\": 1.52,\n    \"description\": \"Mars is the fourth planet and the furthest terrestrial planet from the Sun. The reddish color of its surface is due to finely grained iron(III) oxide dust in the soil, giving it the nickname 'the Red Planet'. Mars's radius is second smallest among the planets in the Solar System at 3,389.5 km (2,106 mi)\",\n    \"mRadius\": 3389.5,\n    \"eRadius\": 3396.2,\n    \"pRadius\": 3376.2,\n    \"density\": 3.93,\n    \"gravity\": 3.72076,\n    \"temperature\": 209,\n    \"surfacePressure\": 0.636,\n    \"rotationalPeriod\": 24.616\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Planet (Mercury)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mercury\",\n    \"type\": \"terrestrial\",\n    \"mass\": 330100000000000000000000,\n    \"solarDistance\": 0.4,\n    \"description\": \"Mercury is the first planet from the Sun and the smallest in the Solar System. It is a terrestrial planet with a heavily cratered surface due to overlapping impact events. These features are well preserved since the planet has no geological activity and an extremely tenuous atmosphere called an exosphere.\",\n    \"mRadius\": 6371,\n    \"eRadius\": 6378.137,\n    \"pRadius\": 6356.752,\n    \"density\": 5.5134,\n    \"gravity\": 9.80665,\n    \"temperature\": 287.91,\n    \"surfacePressure\":101.325,\n    \"rotationalPeriod\": 24\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Planet (Jupiter)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mercury\",\n    \"type\": \"terrestrial\",\n    \"mass\": 330100000000000000000000,\n    \"solarDistance\": 0.4,\n    \"description\": \"Mercury is the first planet from the Sun and the smallest in the Solar System. It is a terrestrial planet with a heavily cratered surface due to overlapping impact events. These features are well preserved since the planet has no geological activity and an extremely tenuous atmosphere called an exosphere.\",\n    \"mRadius\": 6371,\n    \"eRadius\": 6378.137,\n    \"pRadius\": 6356.752,\n    \"density\": 5.5134,\n    \"gravity\": 9.80665,\n    \"temperature\": 287.91,\n    \"surfacePressure\":101.325,\n    \"rotationalPeriod\": 24\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

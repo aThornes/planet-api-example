@@ -36,11 +36,18 @@ You will find a file called Postman_Examples.json. Within postman you can import
 
 There are examples here for each of the endpoints present. As you create new endpoints you should add to this in order to ensure they work as expected. Jest testing will only get you so far, you should perform integration tests as well to ensure correct functionality.
 
+# Improvements
+
+- Database : Currently the API uses a local file store for simplicity, a database such as MongoDB is preferred
+- Structure : All endpoints sit at the same level in the file structure, this would get messy with many endpoints
+- Documentation : Endpoints should be documented with swagger or openapi
+- Stored Format : The data stored is restrictive to planets, this could be adjusted to allow more similar types other than planets. E.g. Galaxies, Stars, Comets, Exoplanets etc.
+
 # Potential Tasks
 
-1. Write jest tests to improve coverage
-2. Implement schema checking
-3. Schema documentation [Swagger/OpenAPI](https://swagger.io/specification/)
-4. Add a new classification to the data store, e.g comets (will require some renaming)
-5. Update index to support new classification
-6. Add a new endpoint route, e.g. Edit functionality
+- Write jest tests to improve coverage
+- Implement schema checking
+- Schema documentation [Swagger/OpenAPI](https://swagger.io/specification/)
+- Add a new classification to the data store, e.g comets (will require some renaming)
+- Update index to support new classification
+- Add a new endpoint route, e.g. Edit functionality

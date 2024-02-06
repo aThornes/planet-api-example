@@ -1,11 +1,7 @@
-import { getAllPlanets } from '@handlers/planetHandler';
+import { getAllIndexNames } from '@handlers/indexHandler';
 
 const getPlanetNames = (_: ExpressRequest, res: ExpressResponse) => {
-  console.log('Endpoint reached');
-  const planets = getAllPlanets();
-  console.log(planets);
-  const names = planets.map((planet) => planet.name);
-  console.log(names);
+  const names = getAllIndexNames();
 
   if (names) {
     return res.status(200).send(names);

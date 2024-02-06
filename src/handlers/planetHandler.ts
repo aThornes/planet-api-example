@@ -1,11 +1,6 @@
 import { hasValue } from '@helpers/utils';
 import { editJsonItem, readJsonItem, writeJsonItem } from './databaseHandler';
-import {
-  addIndexItem,
-  delIndexItem,
-  getAllIndices,
-  searchIndex,
-} from './indexHandler';
+import { addIndexItem, delIndexItem, searchIndex } from './indexHandler';
 
 const getIndexString = ({ name, type, mass, solarDistance }: PlanetBase) =>
   `${name},${type},${mass},${solarDistance}`;
@@ -54,11 +49,6 @@ export const editPlanet = (id: string, updatePlanet: UpdatePlanet) => {
 
 export const getPlanetById = (id: string): Planet =>
   readJsonItem({ store: 'planet', id });
-
-export const getAllPlanets = (): Planet[] => {
-  const ids = getAllIndices();
-  return ids.map((id) => getPlanetById(id));
-};
 
 export const searchStoredPlanets = ({
   name,

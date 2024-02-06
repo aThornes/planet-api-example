@@ -157,12 +157,12 @@ export const searchIndex = (searchParams: SearchIndex) => {
   return matches;
 };
 
-export const getAllIndices = () => {
+export const getAllIndexNames = () => {
   const indexFilePath = getPath();
   const indices = fs.readFileSync(indexFilePath, 'utf-8');
   const indexLines = indices.split('\n').filter((x) => x.trim().length !== 0);
 
   indexLines.shift();
 
-  return indexLines.map((line) => line.split(',')[0]);
+  return indexLines.map((line) => line.split(',')[1]);
 };

@@ -1,12 +1,17 @@
-import { hasValue } from "@helpers/utils";
-import { editJsonItem, readJsonItem, writeJsonItem } from "./databaseHandler";
-import { addIndexItem, delIndexItem, searchIndex } from "./indexHandler";
+import { hasValue } from '@helpers/utils';
+import { editJsonItem, readJsonItem, writeJsonItem } from './databaseHandler';
+import {
+  addIndexItem,
+  delIndexItem,
+  getAllIndices,
+  searchIndex,
+} from './indexHandler';
 
 const getIndexString = ({ name, type, mass, solarDistance }: PlanetBase) =>
   `${name},${type},${mass},${solarDistance}`;
 
 export const addPlanet = (planet: Planet) => {
-  const planetId = writeJsonItem({ store: "planet", jsonData: planet });
+  const planetId = writeJsonItem({ store: 'planet', jsonData: planet });
 
   if (planetId) {
     /* Update index for easier search */
@@ -21,9 +26,9 @@ export const addPlanet = (planet: Planet) => {
 /* Note: Untested */
 export const editPlanet = (id: string, updatePlanet: UpdatePlanet) => {
   try {
-    editJsonItem({ store: "planet", id, update: { $set: updatePlanet } });
+    editJsonItem({ store: 'planet', id, update: { $set: updatePlanet } });
   } catch (e) {
-    console.error("Failed to update planet with ID", id, ". Error\n", e);
+    console.error('Failed to update planet with ID', id, '. Error\n', e);
     return null;
   }
 
@@ -47,8 +52,13 @@ export const editPlanet = (id: string, updatePlanet: UpdatePlanet) => {
   }
 };
 
-export const getPlanetById = (id: string) =>
-  readJsonItem({ store: "planet", id });
+export const getPlanetById = (id: string): Planet =>
+  readJsonItem({ store: 'planet', id });
+
+export const getAllPlanets = (): Planet[] => {
+  const ids = getAllIndices();
+  return ids.map((id) => getPlanetById(id));
+};
 
 export const searchStoredPlanets = ({
   name,
@@ -60,12 +70,12 @@ export const searchStoredPlanets = ({
 }: PlanetSearchParams) => {
   const buildQuery = [];
 
-  if (name) buildQuery.push({ key: "name", $includes: name });
-  if (type) buildQuery.push({ key: "type", $exact: type });
-  if (minDistance) buildQuery.push({ key: "solarDistance", $gte: minDistance });
-  if (maxDistance) buildQuery.push({ key: "solarDistance", $lte: maxDistance });
-  if (minMass) buildQuery.push({ key: "mass", $gte: minMass });
-  if (maxMass) buildQuery.push({ key: "mass", $lt: maxMass });
+  if (name) buildQuery.push({ key: 'name', $includes: name });
+  if (type) buildQuery.push({ key: 'type', $exact: type });
+  if (minDistance) buildQuery.push({ key: 'solarDistance', $gte: minDistance });
+  if (maxDistance) buildQuery.push({ key: 'solarDistance', $lte: maxDistance });
+  if (minMass) buildQuery.push({ key: 'mass', $gte: minMass });
+  if (maxMass) buildQuery.push({ key: 'mass', $lt: maxMass });
 
   return searchIndex({ $and: buildQuery });
 };

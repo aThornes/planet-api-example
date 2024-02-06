@@ -5,7 +5,8 @@ import { getPlanetById } from "@handlers/planetHandler";
  */
 
 const getPlanet = (req: ExpressRequest, res: ExpressResponse) => {
-  const { id } = req.params;
+  
+  const id = req.params?.id;
 
   if (!id) {
     return res.status(400).send({ error: "ID must be provided" });

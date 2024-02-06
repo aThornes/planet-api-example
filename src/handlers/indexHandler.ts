@@ -1,5 +1,5 @@
-import { isNumeric } from "@helpers/utils";
-import fs from "fs";
+import { isNumeric } from '@helpers/utils';
+import fs from 'fs';
 
 /* Note: Env data isn't available on load therefore must invoke as a function */
 const getPath = () => `${process.env.DATA_STORE}/${process.env.DATA_INDEX}`;
@@ -10,9 +10,9 @@ export const addIndexItem = ({ id, data }: { id: string; data: string }) => {
 
 export const delIndexItem = (id: string) => {
   const indexFilePath = getPath();
-  const indices = fs.readFileSync(indexFilePath, "utf-8");
+  const indices = fs.readFileSync(indexFilePath, 'utf-8');
 
-  const lines = indices.split("\n");
+  const lines = indices.split('\n');
 
   /* Note: Not using foreach since we can exit as soon as we find the matching line
        - Start from 1 to ignore header line
@@ -20,7 +20,7 @@ export const delIndexItem = (id: string) => {
   for (let i = 1; i < lines.length; i++) {
     if (lines[i].startsWith(id)) {
       lines.splice(i, 1);
-      fs.writeFileSync(indexFilePath, lines.join("\n"));
+      fs.writeFileSync(indexFilePath, lines.join('\n'));
       return true;
     }
   }
@@ -53,9 +53,9 @@ const isMatch = (
   { $exact, $anycase, $includes, $gt, $lt, $gte, $lte }: SearchItem
 ) => {
   if ($exact) return value === $exact;
-  else if ($anycase && typeof value === "string")
+  else if ($anycase && typeof value === 'string')
     return value.toUpperCase() === $anycase.toUpperCase();
-  else if ($includes && typeof value === "string")
+  else if ($includes && typeof value === 'string')
     return value.toUpperCase().includes($includes.toUpperCase());
   else if ($gt) return Number(value) > $gt;
   else if ($gte) return Number(value) >= $gte;
@@ -118,17 +118,17 @@ const validateIndexMatch = ({
 export const searchIndex = (searchParams: SearchIndex) => {
   if (searchParams.$and && searchParams.$or) {
     throw new Error(
-      "$and and $or are mutually exclusive, they cannot both be provided."
+      '$and and $or are mutually exclusive, they cannot both be provided.'
     );
   }
 
   const indexFilePath = getPath();
-  const indices = fs.readFileSync(indexFilePath, "utf-8");
-  const indexLines = indices.split("\n");
+  const indices = fs.readFileSync(indexFilePath, 'utf-8');
+  const indexLines = indices.split('\n');
 
   const matches = [];
 
-  const headers = indexLines[0].replace("\n", "").split(",");
+  const headers = indexLines[0].replace('\n', '').split(',');
   /* Ignore headers */
   indexLines.shift();
 
@@ -138,7 +138,7 @@ export const searchIndex = (searchParams: SearchIndex) => {
 
     /* Iterate over each provided condition */
     const indexValues: Record<string, any> = {};
-    const indexSplit = index.split(",");
+    const indexSplit = index.split(',');
     headers.forEach((val, i) => {
       const indexValue = indexSplit[i];
 
@@ -155,4 +155,14 @@ export const searchIndex = (searchParams: SearchIndex) => {
   });
 
   return matches;
+};
+
+export const getAllIndexNames = () => {
+  const indexFilePath = getPath();
+  const indices = fs.readFileSync(indexFilePath, 'utf-8');
+  const indexLines = indices.split('\n').filter((x) => x.trim().length !== 0);
+
+  indexLines.shift();
+
+  return indexLines.map((line) => line.split(',')[1]);
 };

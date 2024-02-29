@@ -1,4 +1,4 @@
-import { addPlanet } from "@handlers/planetHandler";
+import { addPlanet } from '@handlers/planetHandler';
 
 /* Task - Improvements
   > Body validation (using schemas)
@@ -37,9 +37,9 @@ const newPlanet = (req: ExpressRequest, res: ExpressResponse) => {
     !temperature ||
     !surfacePressure ||
     !rotationalPeriod ||
-    (type !== "terrestrial" && type !== "gaseous")
+    (type !== 'terrestrial' && type !== 'gaseous')
   ) {
-    return res.status(400).send("One or more missing parameters");
+    return res.status(400).send('One or more missing parameters');
   }
 
   const planetId = addPlanet({

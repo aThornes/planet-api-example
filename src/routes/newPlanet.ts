@@ -32,6 +32,8 @@ const newPlanet = (req: ExpressRequest, res: ExpressResponse) => {
     !solarDistance ||
     !description ||
     !mRadius ||
+    !eRadius ||
+    !pRadius ||
     !density ||
     !gravity ||
     !temperature ||

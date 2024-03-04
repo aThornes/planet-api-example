@@ -1,0 +1,15 @@
+{
+  "name": "Josh Land",
+  "type": "terrestrial",
+  "mass": 7,
+  "solarDistance": 7,
+  "description": "Josh Land is the best planet in the solar system",
+  "mRadius": 7,
+  "eRadius": 7,
+  "pRadius": 7.7,
+  "density": 7,
+  "gravity": 7.777,
+  "temperature": 0.7,
+  "surfacePressure": 77,
+  "rotationalPeriod": 7
+}

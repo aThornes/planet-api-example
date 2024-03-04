@@ -1,0 +1,15 @@
+{
+  "name": "Planet Prina",
+  "type": "terrestrial",
+  "mass": 70000,
+  "solarDistance": 14,
+  "description": "Prina is the second best planet :)",
+  "mRadius": 231,
+  "eRadius": 134234,
+  "pRadius": 47498,
+  "density": 34836,
+  "gravity": 59473,
+  "temperature": 234,
+  "surfacePressure": 384,
+  "rotationalPeriod": 343
+}

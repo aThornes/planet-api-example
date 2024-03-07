@@ -1,0 +1,15 @@
+{
+  "name": "Saturn",
+  "type": "gaseous",
+  "mass": 5.683e+26,
+  "solarDistance": 9,
+  "description": "Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine-and-a-half times that of Earth.[26][27] It has only one-eighth the average density of Earth, but is over 95 times more massive.[28][29][30] Even though Saturn is nearly the size of Jupiter, Saturn has less than one-third of Jupiter's mass. Saturn orbits the Sun at a distance of 9.59 AU (1,434 million km) with an orbital period of 29.45 years.",
+  "mRadius": 58232,
+  "eRadius": 60268,
+  "pRadius": 54364,
+  "density": 0.687,
+  "gravity": 9,
+  "temperature": 134,
+  "surfacePressure": 10000,
+  "rotationalPeriod": 10.57
+}

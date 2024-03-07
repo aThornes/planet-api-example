@@ -39,7 +39,7 @@ const newPlanet = (req: ExpressRequest, res: ExpressResponse) => {
     !temperature ||
     !surfacePressure ||
     !rotationalPeriod ||
-    (type !== 'terrestrial' && type !== 'gaseous')
+    (type !== 'terrestrial' && type !== 'gaseous' && type !== 'ice giant')
   ) {
     return res.status(400).send('One or more missing parameters');
   }

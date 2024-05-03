@@ -1,4 +1,4 @@
-import { getAllIndexNames } from '@handlers/indexHandler';
+import { getAllIndexNames } from "old/handlers/indexHandler";
 
 const getPlanetNames = (_: ExpressRequest, res: ExpressResponse) => {
   const names = getAllIndexNames();

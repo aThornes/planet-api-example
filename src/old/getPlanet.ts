@@ -1,11 +1,10 @@
-import { getPlanetById } from "@handlers/planetHandler";
+import { getPlanetById } from "old/handlers/planetHandler";
 
 /* Task - Improvements
   > Response validation (using schemas)
  */
 
 const getPlanet = (req: ExpressRequest, res: ExpressResponse) => {
-  
   const id = req.params?.id;
 
   if (!id) {

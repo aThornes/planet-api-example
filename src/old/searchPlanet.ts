@@ -1,4 +1,4 @@
-import { searchStoredPlanets } from "@handlers/planetHandler";
+import { searchStoredPlanets } from "old/handlers/planetHandler";
 
 /* Task - Improvements
   > Body validation (using schemas)

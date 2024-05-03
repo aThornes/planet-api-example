@@ -1,7 +1,7 @@
 import newPlanet from "./searchPlanet";
 import mockPlanet from "../../__tests__/mock/mockPlanet.json";
 
-import { searchStoredPlanets } from "@handlers/planetHandler";
+import { searchStoredPlanets } from "old/handlers/planetHandler";
 
 jest.mock("@handlers/planetHandler", () => ({
   __esModule: true,

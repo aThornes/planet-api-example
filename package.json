@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && yarn webpack",
+    "build": "./scripts/build.sh && rimraf dist && yarn webpack",
     "start": "node dist/main.js",
     "dev": "yarn run build && yarn run start",
     "test": "yarn jest",
+    "createRoute": "./scripts/createRoute.sh",
     "prettier-check": "prettier --check .",
     "prettier-write": "prettier --write ."
   },

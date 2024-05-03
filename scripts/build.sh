@@ -5,6 +5,8 @@
 #   Routes are picked up by app.py through a function call
 # ----------------------------------------------------------------------
 
+basePath="$(dirname "$0")/.."
+
 function get_camelcase() {
     file=$1
     directory=$(dirname $file)
@@ -12,8 +14,8 @@ function get_camelcase() {
     echo $camelCase
 }
 
-routes_dir="$(dirname "$0")/src/routes"
-output_file="$(dirname "$0")/src/router.ts"
+routes_dir="$basePath/src/routes"
+output_file="$basePath/src/router.ts"
 
 valid_methods=("GET" "POST" "PUT" "DELETE" "PATCH" "OPTIONS")
 

@@ -1,5 +1,7 @@
 #!/bin/bash
-pathPrefix="$(dirname "$0")/src/routes"
+basePath="$(dirname "$0")/.."
+
+pathPrefix="$basePath/src/routes"
 
 # Route creation script, makes making a new route a bit easier
 valid_methods=("GET" "POST" "PUT" "DELETE" "PATCH" "OPTIONS")

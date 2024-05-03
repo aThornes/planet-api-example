@@ -53,4 +53,4 @@ const searchItem = async (
     .toArray();
 };
 
-export { initialiseDatabase, writeItem, searchItem };
+export { initialiseDatabase, writeItem, readItem, searchItem };

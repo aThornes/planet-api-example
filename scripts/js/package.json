@@ -1,0 +1,11 @@
+{
+  "name": "script-js",
+  "version": "0.0.1",
+  "description": "JS files used for helper functions, not part of actual application",
+  "author": "Adam Thornes <adamthornes96@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

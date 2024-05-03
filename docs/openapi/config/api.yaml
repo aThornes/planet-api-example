@@ -1,0 +1,7 @@
+openapi: "3.0.1"
+info:
+  description: "Planet API rest api"
+  version: "0.0.1"
+  title: "Planet API rest api"
+  contact:
+    name: "Adam T"

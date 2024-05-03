@@ -1,0 +1,697 @@
+openapi: 3.0.1
+info:
+  description: Planet API rest api
+  version: 0.0.1
+  title: Planet API rest api
+  contact:
+    name: Adam T
+tags:
+  - name: body
+    description: Endpoints for managing celestial bodies
+servers:
+  - url: http://localhost:8080
+    description: Locally run server, this has not currently been hosted remotely
+paths:
+  /body:
+    post:
+      tags:
+        - body
+      summary: Add a celestial body
+      description: Add a celestial body to the database
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the newly added celestial body
+        '400':
+          description: Invalid request body, failed schema check
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                  error:
+                    type: string
+                    description: Error details
+      requestBody:
+        description: Input body parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Adds a new celestial body to the database
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                    - Star
+                    - Planet
+                    - Asteroid
+                    - Comet
+                    - Exoplanet
+                    - Moon
+                mass:
+                  type: number
+                radius:
+                  type: number
+                orbitalParameters:
+                  type: object
+                  properties:
+                    orbitalPeriod:
+                      type: number
+                    semiMajorAxis:
+                      type: number
+                    eccentricity:
+                      type: number
+                    inclination:
+                      type: number
+                  required:
+                    - orbitalPeriod
+                    - semiMajorAxis
+                    - eccentricity
+                    - inclination
+                  additionalProperties: false
+                surfaceTemperature:
+                  type: number
+                composition:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      element:
+                        type: string
+                      percentage:
+                        type: number
+                        minimum: 0
+                        maximum: 100
+                    required:
+                      - element
+                      - percentage
+                    additionalProperties: false
+                atmosphere:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      element:
+                        type: string
+                      percentage:
+                        type: number
+                        minimum: 0
+                        maximum: 100
+                    required:
+                      - element
+                      - percentage
+                    additionalProperties: false
+                surfaceFeatures:
+                  type: array
+                  items:
+                    type: string
+                rotationPeriod:
+                  type: number
+                orbitingBodyIds:
+                  type: array
+                  items:
+                    type: string
+                discoveryInformation:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    discoveredBy:
+                      type: string
+                    method:
+                      type: string
+                      enum:
+                        - Visual Observation
+                        - Telescopes
+                        - Photography
+                        - Radio Astronomy
+                        - Infrared Astronomy
+                        - Microwave Astronomy
+                        - X-ray Astronomy
+                        - Gamma-ray Astronomy
+                        - Transit Photometry
+                        - Radial Velocity Method
+                        - Gravitational Microlensing
+                  additionalProperties: false
+                distance:
+                  type: number
+                age:
+                  type: number
+                physicalCharacteristics:
+                  type: object
+                  properties:
+                    color:
+                      type: string
+                    density:
+                      type: number
+                    albedo:
+                      type: number
+                  additionalProperties: false
+                parentBodyId:
+                  type: string
+                observationalData:
+                  type: array
+                  items:
+                    type: string
+                habitability:
+                  type: boolean
+                history:
+                  type: string
+              required:
+                - name
+                - type
+                - mass
+                - radius
+                - orbitalParameters
+              additionalProperties: false
+  /body/search:
+    post:
+      tags:
+        - body
+      summary: Search Celestial Bodies
+      description: Search for celestial bodies in the database
+      responses:
+        '200':
+          description: Endpoint return data
+          content:
+            application/json:
+              schema:
+                description: Response schema for the search endpoint for celestial bodies
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    name:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                        - Star
+                        - Planet
+                        - Asteroid
+                        - Comet
+                        - Exoplanet
+                        - Moon
+                    mass:
+                      type: number
+                    radius:
+                      type: number
+                    orbitalParameters:
+                      type: object
+                      properties:
+                        orbitalPeriod:
+                          type: number
+                        semiMajorAxis:
+                          type: number
+                        eccentricity:
+                          type: number
+                        inclination:
+                          type: number
+                      required:
+                        - orbitalPeriod
+                        - semiMajorAxis
+                        - eccentricity
+                        - inclination
+                      additionalProperties: false
+                    surfaceTemperature:
+                      type: number
+                    composition:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          element:
+                            type: string
+                          percentage:
+                            type: number
+                            minimum: 0
+                            maximum: 100
+                        required:
+                          - element
+                          - percentage
+                        additionalProperties: false
+                    atmosphere:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          element:
+                            type: string
+                          percentage:
+                            type: number
+                            minimum: 0
+                            maximum: 100
+                        required:
+                          - element
+                          - percentage
+                        additionalProperties: false
+                    surfaceFeatures:
+                      type: array
+                      items:
+                        type: string
+                    rotationPeriod:
+                      type: number
+                    orbitingBodyIds:
+                      type: array
+                      items:
+                        type: string
+                    discoveryInformation:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          format: date
+                        method:
+                          type: string
+                        discoveredBy:
+                          type: string
+                      additionalProperties: false
+                    distance:
+                      type: number
+                    age:
+                      type: number
+                    physicalCharacteristics:
+                      type: object
+                      properties:
+                        color:
+                          type: string
+                        density:
+                          type: number
+                        albedo:
+                          type: number
+                      additionalProperties: false
+                    parentBodyId:
+                      type: string
+                    observationalData:
+                      type: array
+                      items:
+                        type: string
+                    habitability:
+                      type: boolean
+                    history:
+                      type: string
+                  required:
+                    - name
+                    - type
+                    - mass
+                    - radius
+                    - orbitalParameters
+                  additionalProperties: false
+      requestBody:
+        description: Input body parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Search celestial bodies
+              type: object
+              properties:
+                limit:
+                  type: integer
+                  description: 'Limit the number of results (default: 10)'
+                  minimum: 1
+                  maximum: 100
+                offset:
+                  type: integer
+                  description: 'Offset the results (default: 0)'
+                  minimum: 0
+                name:
+                  type: string
+                  description: Name of the celestial body
+                type:
+                  type: string
+                  description: Type of the celestial body
+                distance:
+                  $ref: '#/components/schemas/range'
+                radius:
+                  $ref: '#/components/schemas/range'
+                mass:
+                  $ref: '#/components/schemas/range'
+                discoveryDate:
+                  $ref: '#/components/schemas/date-range'
+                discoveredBy:
+                  type: string
+                  description: Name of the person who discovered the celestial body
+                discoveryMethod:
+                  type: string
+                  description: Method of discovery
+                  enum:
+                    - Visual Observation
+                    - Telescopes
+                    - Photography
+                    - Radio Astronomy
+                    - Infrared Astronomy
+                    - Microwave Astronomy
+                    - X-ray Astronomy
+                    - Gamma-ray Astronomy
+                    - Transit Photometry
+                    - Radial Velocity Method
+                    - Gravitational Microlensing
+                parentId:
+                  type: string
+                  description: Id of the parent celestial body
+  /body/{id}:
+    delete:
+      tags:
+        - body
+      summary: Delete a celestial body
+      description: Delete a celestial body from the database
+      responses:
+        '204':
+          description: Item was deleted
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+    get:
+      tags:
+        - body
+      summary: Get a single body
+      description: Retrieve a single celestial body from the database
+      responses:
+        '200':
+          description: Endpoint return data
+          content:
+            application/json:
+              schema:
+                description: Response schema for the get endpoint for celestial bodies
+                type: object
+                properties:
+                  _id:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - Star
+                      - Planet
+                      - Asteroid
+                      - Comet
+                      - Exoplanet
+                      - Moon
+                  mass:
+                    type: number
+                  radius:
+                    type: number
+                  orbitalParameters:
+                    type: object
+                    properties:
+                      orbitalPeriod:
+                        type: number
+                      semiMajorAxis:
+                        type: number
+                      eccentricity:
+                        type: number
+                      inclination:
+                        type: number
+                    required:
+                      - orbitalPeriod
+                      - semiMajorAxis
+                      - eccentricity
+                      - inclination
+                    additionalProperties: false
+                  surfaceTemperature:
+                    type: number
+                  composition:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        element:
+                          type: string
+                        percentage:
+                          type: number
+                          minimum: 0
+                          maximum: 100
+                      required:
+                        - element
+                        - percentage
+                      additionalProperties: false
+                  atmosphere:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        element:
+                          type: string
+                        percentage:
+                          type: number
+                          minimum: 0
+                          maximum: 100
+                      required:
+                        - element
+                        - percentage
+                      additionalProperties: false
+                  surfaceFeatures:
+                    type: array
+                    items:
+                      type: string
+                  rotationPeriod:
+                    type: number
+                  orbitingBodyIds:
+                    type: array
+                    items:
+                      type: string
+                  discoveryInformation:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        format: date
+                      method:
+                        type: string
+                      discoveredBy:
+                        type: string
+                    additionalProperties: false
+                  distance:
+                    type: number
+                  age:
+                    type: number
+                  discoveryId:
+                    type: string
+                  physicalCharacteristics:
+                    type: object
+                    properties:
+                      color:
+                        type: string
+                      density:
+                        type: number
+                      albedo:
+                        type: number
+                    additionalProperties: false
+                  parentBodyId:
+                    type: string
+                  observationalData:
+                    type: array
+                    items:
+                      type: string
+                  habitability:
+                    type: boolean
+                  history:
+                    type: string
+                required:
+                  - name
+                  - type
+                  - mass
+                  - radius
+                  - orbitalParameters
+                additionalProperties: false
+        '404':
+          description: Could not find body by the given ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+    put:
+      tags:
+        - body
+      summary: Edit an existing celestial body
+      description: Edit an existing celestial body
+      responses:
+        '201':
+          description: Successful response
+        '400':
+          description: Invalid request body, failed schema check
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                  error:
+                    type: string
+                    description: Error details
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Input body parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Adds a new celestial body to the database
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                    - Star
+                    - Planet
+                    - Asteroid
+                    - Comet
+                    - Exoplanet
+                    - Moon
+                mass:
+                  type: number
+                radius:
+                  type: number
+                orbitalParameters:
+                  type: object
+                  properties:
+                    orbitalPeriod:
+                      type: number
+                    semiMajorAxis:
+                      type: number
+                    eccentricity:
+                      type: number
+                    inclination:
+                      type: number
+                  required:
+                    - orbitalPeriod
+                    - semiMajorAxis
+                    - eccentricity
+                    - inclination
+                  additionalProperties: false
+                surfaceTemperature:
+                  type: number
+                composition:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      element:
+                        type: string
+                      percentage:
+                        type: number
+                        minimum: 0
+                        maximum: 100
+                    required:
+                      - element
+                      - percentage
+                    additionalProperties: false
+                atmosphere:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      element:
+                        type: string
+                      percentage:
+                        type: number
+                        minimum: 0
+                        maximum: 100
+                    required:
+                      - element
+                      - percentage
+                    additionalProperties: false
+                surfaceFeatures:
+                  type: array
+                  items:
+                    type: string
+                rotationPeriod:
+                  type: number
+                orbitingBodyIds:
+                  type: array
+                  items:
+                    type: string
+                discoveryInformation:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    method:
+                      type: string
+                    discoveredBy:
+                      type: string
+                  additionalProperties: false
+                distance:
+                  type: number
+                age:
+                  type: number
+                physicalCharacteristics:
+                  type: object
+                  properties:
+                    color:
+                      type: string
+                    density:
+                      type: number
+                    albedo:
+                      type: number
+                  additionalProperties: false
+                parentBodyId:
+                  type: string
+                observationalData:
+                  type: array
+                  items:
+                    type: string
+                habitability:
+                  type: boolean
+                history:
+                  type: string
+              additionalProperties: false
+components:
+  schemas:
+    Blank:
+      description: Blank schema for OPTIONS call
+      type: object
+    range:
+      type: object
+      properties:
+        min:
+          type: number
+          description: Minimum value
+        max:
+          type: number
+          description: Maximum value
+    date-range:
+      type: object
+      properties:
+        min:
+          type: string
+          format: date-time
+          description: Minimum value
+        max:
+          type: string
+          format: date-time
+          description: Maximum value

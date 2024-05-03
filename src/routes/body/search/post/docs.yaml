@@ -1,9 +1,7 @@
 tags:
   - body
-summary: Test endpoint
-description: Just an intial test
+summary: Search Celestial Bodies
+description: Search for celestial bodies in the database
 responses:
   "200":
-    description: Hello World!
-  "400":
-    description: Response description
+    description: Array of celestial body objects

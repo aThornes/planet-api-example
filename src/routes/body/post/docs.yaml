@@ -7,22 +7,22 @@ responses:
     description: Successful response
     content:
       application/json:
-      schema:
-        type: object
-        properties:
-        id:
-          type: string
-          description: The ID of the newly added celestial body
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The ID of the newly added celestial body
   "400":
     description: Invalid request body, failed schema check
     content:
       application/json:
-      schema:
-        type: object
-        properties:
-        message:
-          type: string
-          description: Error message
-        error:
-          type: string
-          description: Error details
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+            error:
+              type: string
+              description: Error details

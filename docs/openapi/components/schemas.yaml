@@ -1,0 +1,4 @@
+schemas:
+  Blank:
+    description: Blank schema for OPTIONS call
+    type: object

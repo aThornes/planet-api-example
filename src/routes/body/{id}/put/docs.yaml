@@ -9,12 +9,12 @@ responses:
     description: Invalid request body, failed schema check
     content:
       application/json:
-      schema:
-        type: object
-        properties:
-        message:
-          type: string
-          description: Error message
-        error:
-          type: string
-          description: Error details
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+            error:
+              type: string
+              description: Error details

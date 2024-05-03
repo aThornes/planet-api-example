@@ -1,9 +1,9 @@
 tags:
-  - entity
+  - body
 summary: Test endpoint
 description: Just an intial test
 responses:
-   "200":
+  "200":
     description: Hello World!
   "400":
     description: Response description

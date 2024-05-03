@@ -45,7 +45,7 @@ echo "  - $(echo "$path" | cut -d'/' -f1)" >> $doc_file
 echo "summary: Test endpoint" >> $doc_file
 echo "description: Just an intial test" >> $doc_file
 echo "responses:" >> $doc_file
-echo "   \"200\":" >> $doc_file
+echo "  \"200\":" >> $doc_file
 echo "    description: Hello World!" >> $doc_file
 echo "  \"400\":" >> $doc_file
 echo "    description: Response description" >> $doc_file
@@ -72,7 +72,7 @@ echo "  \"additionalProperties\": false " >> $schema_file
 echo "}" >> $schema_file
 
 # Write handler.ts file
-echo "const handler = async ({ req, res }: EndpointReq) => {" > $ts_file
+echo "const handler = async (req: ExpressRequest, res: ExpressResponse) => {" > $ts_file
 echo "  return res.status(200).json({ message: \"Hello, World!\" });" >> $ts_file
 echo "};" >> $ts_file
 echo "" >> $ts_file

@@ -44,9 +44,6 @@ module.exports = {
       "mongodb-client-encryption": false,
     },
   },
-  externals: {
-    express: "express",
-  },
   optimization: {
     minimize: false,
   },

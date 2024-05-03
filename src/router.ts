@@ -6,11 +6,27 @@
   |---                                                    --|
   |---------------------------------------------------------|
 */
-import entityPost from './routes/entity/post/handler';
+import bodyPost from './routes/body/post/handler';
+import body_id_Delete from './routes/body/{id}/delete/handler';
+import body_id_Put from './routes/body/{id}/put/handler';
+import body_id_Get from './routes/body/{id}/get/handler';
+import bodySearchPost from './routes/body/search/post/handler';
 
 const defineRoutes = (app: import('express').Application) => {
-  // POST /entity
-  app.post('/entity', entityPost);
+  // POST /body
+  app.post('/body', bodyPost);
+
+  // DELETE /body/:id
+  app.delete('/body/:id', body_id_Delete);
+
+  // PUT /body/:id
+  app.put('/body/:id', body_id_Put);
+
+  // GET /body/:id
+  app.get('/body/:id', body_id_Get);
+
+  // POST /body/search
+  app.post('/body/search', bodySearchPost);
 
 };
 

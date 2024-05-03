@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/body/post/responseSchema",
+  "title": "Search response for celestial bodies",
+  "description": "Response schema for the search endpoint for celestial bodies",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "_id": { "type": "string" },
+      "name": { "type": "string" },
+      "type": {
+        "type": "string",
+        "enum": ["Star", "Planet", "Asteroid", "Comet", "Exoplanet", "Moon"]
+      },
+      "mass": { "type": "number" },
+      "radius": { "type": "number" },
+      "orbitalParameters": {
+        "type": "object",
+        "properties": {
+          "orbitalPeriod": { "type": "number" },
+          "semiMajorAxis": { "type": "number" },
+          "eccentricity": { "type": "number" },
+          "inclination": { "type": "number" }
+        },
+        "required": [
+          "orbitalPeriod",
+          "semiMajorAxis",
+          "eccentricity",
+          "inclination"
+        ],
+        "additionalProperties": false
+      },
+      "surfaceTemperature": { "type": "number" },
+      "composition": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "element": { "type": "string" },
+            "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "required": ["element", "percentage"],
+          "additionalProperties": false
+        }
+      },
+      "atmosphere": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "element": { "type": "string" },
+            "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "required": ["element", "percentage"],
+          "additionalProperties": false
+        }
+      },
+      "surfaceFeatures": { "type": "array", "items": { "type": "string" } },
+      "rotationPeriod": { "type": "number" },
+      "orbitingBodyIds": { "type": "array", "items": { "type": "string" } },
+      "discoveryInformation": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "method": { "type": "string" },
+          "discoveredBy": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "distance": { "type": "number" },
+      "age": { "type": "number" },
+      "physicalCharacteristics": {
+        "type": "object",
+        "properties": {
+          "color": { "type": "string" },
+          "density": { "type": "number" },
+          "albedo": { "type": "number" }
+        },
+        "additionalProperties": false
+      },
+      "parentBodyId": { "type": "string" },
+      "observationalData": { "type": "array", "items": { "type": "string" } },
+      "habitability": { "type": "boolean" },
+      "history": { "type": "string" }
+    },
+    "required": ["name", "type", "mass", "radius", "orbitalParameters"],
+    "additionalProperties": false
+  }
+}

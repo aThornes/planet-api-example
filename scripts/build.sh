@@ -10,10 +10,10 @@ basePath="$(dirname "$0")/.."
 function get_camelcase() {
     file=$1
     directory=$(dirname $file)
+    directory=$(echo $directory | tr '{}' '_')
     camelCase=$(echo $directory | awk -F/ '{for (i=2; i<=NF; i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1' OFS="")
     echo $camelCase
 }
-
 routes_dir="$basePath/src/routes"
 output_file="$basePath/src/router.ts"
 
@@ -37,6 +37,7 @@ echo "*/" >> $output_file
 for file in $files
 do
     camelCase=$(get_camelcase $file)
+    
     echo "import $camelCase from './routes/$file';" >> $output_file
 done
 
@@ -62,6 +63,9 @@ do
 
     # Prefix is directory path without method item
     prefix=$(dirname $(dirname $file))
+
+    # Replace {id} with :id in the prefix
+    prefix=$(echo $prefix | sed 's/{\([^}]*\)}/:\1/g')
 
     # Write comment and router include to file
     echo "  // $methodUpper /$prefix" >> $output_file

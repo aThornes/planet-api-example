@@ -38,5 +38,9 @@ const runServer = () => {
   });
 };
 
-initialiseDatabase();
-runServer();
+const setup = async () => {
+  await initialiseDatabase();
+  runServer();
+};
+
+setup();

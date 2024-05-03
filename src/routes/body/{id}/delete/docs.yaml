@@ -1,0 +1,7 @@
+tags:
+  - body
+summary: Delete a celestial body
+description: Delete a celestial body from the database
+responses:
+  "204":
+    description: Item was deleted

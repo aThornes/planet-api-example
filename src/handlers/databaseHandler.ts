@@ -3,7 +3,7 @@ import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 let client;
 
 export const initialiseDatabase = async () => {
-  const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@planetcluster.alkxpse.mongodb.net/?retryWrites=true&w=majority&appName=PlanetCluster`;
+  const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}`;
 
   client = new MongoClient(uri, {
     serverApi: {

@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import defineRoutes from "./router";
-import { initialiseDatabase, writeJsonItem } from "@handlers/databaseHandler";
+import { initialiseDatabase } from "@handlers/databaseHandler";
 
 dotenv.config();
 
@@ -38,5 +38,9 @@ const runServer = () => {
   });
 };
 
-initialiseDatabase();
-runServer();
+const setup = async () => {
+  await initialiseDatabase();
+  runServer();
+};
+
+setup();

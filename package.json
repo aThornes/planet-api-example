@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && yarn webpack",
+    "build": "./scripts/build.sh && rimraf dist && yarn webpack",
     "start": "node dist/main.js",
     "dev": "yarn run build && yarn run start",
     "test": "yarn jest",
+    "createRoute": "./scripts/createRoute.sh",
     "prettier-check": "prettier --check .",
     "prettier-write": "prettier --write ."
   },
@@ -15,7 +16,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "typescript": "^4.8.2"
+    "jsonschema": "^1.4.1",
+    "mongodb": "^6.5.0",
+    "typescript": "^4.8.2",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/cors": "^2.8.16",

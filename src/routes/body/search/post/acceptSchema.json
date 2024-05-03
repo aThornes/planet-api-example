@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/body/post/acceptSchema",
+  "title": "Search celestial bodies",
+  "description": "Search celestial bodies",
+  "type": "object",
+  "definitions": {
+    "range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number",
+          "description": "Minimum value"
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value"
+        }
+      }
+    },
+    "date-range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Minimum value"
+        },
+        "max": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Maximum value"
+        }
+      }
+    }
+  },
+  "properties": {
+    "limit": {
+      "type": "integer",
+      "description": "Limit the number of results (default: 10)",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "offset": {
+      "type": "integer",
+      "description": "Offset the results (default: 0)",
+      "minimum": 0
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the celestial body"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the celestial body"
+    },
+    "distance": {
+      "$ref": "#/definitions/range"
+    },
+    "radius": {
+      "$ref": "#/definitions/range"
+    },
+    "mass": {
+      "$ref": "#/definitions/range"
+    },
+    "discoveryDate": {
+      "$ref": "#/definitions/date-range"
+    },
+    "discoveredBy": {
+      "type": "string",
+      "description": "Name of the person who discovered the celestial body"
+    },
+    "discoveryMethod": {
+      "type": "string",
+      "description": "Method of discovery",
+      "enum": [
+        "Visual Observation",
+        "Telescopes",
+        "Photography",
+        "Radio Astronomy",
+        "Infrared Astronomy",
+        "Microwave Astronomy",
+        "X-ray Astronomy",
+        "Gamma-ray Astronomy",
+        "Transit Photometry",
+        "Radial Velocity Method",
+        "Gravitational Microlensing"
+      ]
+    },
+    "parentId": {
+      "type": "string",
+      "description": "Id of the parent celestial body"
+    }
+  }
+}

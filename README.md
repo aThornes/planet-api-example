@@ -1,55 +1,23 @@
 # Example API - Planet store
 
-API built around storing information on planets. Can be expanded as needed
+API built around storing information on celestial bodies such as planets. Can be expanded as needed.
+
+All endpoints are as described in docs/apiDocs.yaml
 
 Includes partial jest tests, see examples with the suffix .test.ts. These should be expanded as an excerise to improve coverage.
 
+## Scripts
+
+`yarn dev` - Builds and runs the server for local development
+
+`yarn createRoute` - Creates the files for a new development endpoint
+
+`yarn build`- Runs the build script which ensures application routes are up to date
+
 ## Dependencies
 
-[Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
+`node` - Node is required in order to build and run this application. Built with v18.17.0 but should work on later versions. To manage versions, the `nvm` package is recommended.
 
-## Running
+`yarn` - Yarn is a package manager used to install all packages. Npm is sufficient but will cause complaints having two types of lock file
 
-Install packages (one time or when packages updated)
-`yarn install`
-
-Run application
-
-1. `yarn build`
-2. `yarn start`
-
-   OR
-
-- `yarn dev`
-
-# Postman
-
-When the application is running, if configuration is unchanged, the server will run on port 8080 (as defined in .env). In order to send requests to the API, postman is recommended for testing purposes.
-
-[Postman](https://www.postman.com/)
-
-Note: You do not need an account, you can download the client and use straight away.
-
-## Import JSON
-
-You will find a file called Postman_Examples.json in the top level directory. Within postman you can import this file, see the button on the left hand side towards the top of the UI.
-
-There are examples here for each of the endpoints present. As you create new endpoints you should add to this in order to ensure they work as expected. Jest testing will only get you so far, you should perform integration tests as well to ensure correct functionality.
-
-# Improvements
-
-- Database : Currently the API uses a local file store for simplicity, a database such as MongoDB is preferred
-- Structure : All endpoints sit at the same level in the file structure, this would get messy with many endpoints
-- Documentation : Endpoints should be documented with swagger or openapi
-- Stored Format : The data stored is restrictive to planets, this could be adjusted to allow more similar types other than planets. E.g. Galaxies, Stars, Comets, Exoplanets etc.
-
-# Potential Tasks
-
-- Write jest tests to improve coverage
-- Implement schema checking
-- Schema documentation [Swagger/OpenAPI](https://swagger.io/specification/)
-- Add a new classification to the data store, e.g comets (will require some renaming)
-- Update index to support new classification
-- Add a new endpoint route, e.g. Edit functionality
-- Support new data store entirely, e.g. users
-- Replace filestore system for database, e.g. MongoDB
+`MongoDB` - Requires an active database mongodb instance, this was developed with MongoDB Atlas for which just a valid connection string and user/pass details must be provided in .env

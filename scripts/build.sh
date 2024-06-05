@@ -6,6 +6,7 @@
 # ----------------------------------------------------------------------
 
 basePath="$(dirname "$0")/.."
+echo $basePath
 
 function get_camelcase() {
     file=$1
@@ -36,8 +37,10 @@ echo "*/" >> $output_file
 # Write imports to file
 for file in $files
 do
+    if [[ $file == *"routes/"* ]]; then
+        file=${file#*"routes/"}
+    fi
     camelCase=$(get_camelcase $file)
-    
     echo "import $camelCase from './routes/$file';" >> $output_file
 done
 
@@ -48,6 +51,9 @@ echo "const defineRoutes = (app: import('express').Application) => {" >> $output
 # Include each router to application
 for file in $files
 do
+    if [[ $file == *"routes/"* ]]; then
+        file=${file#*"routes/"}
+    fi
     camelCase=$(get_camelcase $file)
     
     # Extract method from final directory and make uppercase

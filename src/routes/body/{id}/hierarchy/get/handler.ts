@@ -3,15 +3,14 @@ import { idText } from 'typescript';
 
 const handler = async (req: ExpressRequest, res: ExpressResponse) => {
   const { id } = req.params;
-  const recursionDepth = req.headers['x-recursion-depth'] || 5;
+  const recursionDepth: number = Number(req.headers['x-recursion-depth']) || 5;
 
   //Retrieve Body using ID from database
   const body = await getItem(id);
-
   let hierarchy = { [id]: null };
 
   //Get children (recursive) function
-  const getChildren = async (id: string) => {
+  const getChildren = async (id: string, depth: number = 1) => {
     let children = await searchItem({
       parentBodyId: id,
     });
@@ -21,7 +20,11 @@ const handler = async (req: ExpressRequest, res: ExpressResponse) => {
     for (let i = 0; i < children.length; i++) {
       const child = children[i];
       const childID = child._id.toString();
-      let childrensChildren = await getChildren(childID);
+
+      let childrensChildren = null;
+      if (depth < recursionDepth) {
+        childrensChildren = await getChildren(childID, depth + 1);
+      }
       childrenObject[childID] = childrensChildren;
     }
 
